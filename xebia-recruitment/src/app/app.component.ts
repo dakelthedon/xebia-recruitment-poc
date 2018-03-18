@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  private searchValue;
+
+  constructor() {
+
+  }
+
+  search = (): void => {
+    console.log(this);
+  }
 }
