@@ -6,10 +6,10 @@ import { CartComponent } from './cart/cart.component';
 import { CatalogComponent } from './catalog/catalog.component';
 import {OfferService} from './offer.service';
 import {ProductService} from './product.service';
-import {Http, HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
