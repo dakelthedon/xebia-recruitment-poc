@@ -10,19 +10,22 @@ import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {HttpModule} from "@angular/http";
+import { GroupbyPipe } from './groupby.pipe';
+import {CartService} from "./cart.service";
 
 @NgModule({
   declarations: [
     AppComponent,
     DetailComponent,
     CartComponent,
-    CatalogComponent
+    CatalogComponent,
+    GroupbyPipe
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
-    NgbModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot(
       [
         {path: '', component: CatalogComponent, pathMatch: 'full'},
@@ -37,7 +40,8 @@ import {HttpModule} from "@angular/http";
 
   providers: [
     OfferService,
-    ProductService
+    ProductService,
+    CartService
   ],
   bootstrap: [AppComponent]
 })
