@@ -1,0 +1,11 @@
+<div class="container-fluid width-100 row">
+  <div *ngFor="let b of _books" class="col-4 col-md-3">
+    <div class="text-center">
+      <img src="{{b.cover}}" class="catalog-cover"/>
+
+      <p >{{b.title}}</p>
+      <p>EUR : {{b.price}}
+      <i class="pointer-cursor fa fa-cart-plus fa-2x black add-to-cart" (click)="addToCart(b)"></i></p>
+    </div>
+  </div>
+</div>
