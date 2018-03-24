@@ -19,7 +19,7 @@
 }
 
 .default-color {
-  color: #48110f;
+  color: #48060a;
 }
 
 .padding-bottom-2 {
@@ -36,4 +36,12 @@
 
 .color-green {
   color: darkgreen;
+}
+
+.color-red {
+  color: darkred;
+}
+
+.no-border-color {
+  border-color: transparent;
 }
