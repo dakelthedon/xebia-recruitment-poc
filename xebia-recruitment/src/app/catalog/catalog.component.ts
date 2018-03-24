@@ -13,6 +13,10 @@ export class CatalogComponent implements OnInit {
   private _books: Book[];
   private _productService: ProductService;
   private _cartService: CartService;
+  private _titleFilter: string;
+  private _priceMin: number;
+  private _priceMax: number;
+  private _display = false;
 
   constructor(productService: ProductService,
               cartService: CartService) {
@@ -23,6 +27,7 @@ export class CatalogComponent implements OnInit {
   ngOnInit() {
     this._productService.getBooks().subscribe((books: Book[]) => {
       this._books = books;
+      this._display = true;
     });
   }
 

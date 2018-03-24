@@ -12,6 +12,8 @@ import {HttpModule} from '@angular/http';
 import { GroupbyPipe } from './groupby.pipe';
 import {CartService} from './cart.service';
 import {OfferService} from './offer.service';
+import { TitlePipe } from './title.pipe';
+import { PricePipe } from './price.pipe';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {OfferService} from './offer.service';
     DetailComponent,
     CartComponent,
     CatalogComponent,
-    GroupbyPipe
+    GroupbyPipe,
+    TitlePipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,
