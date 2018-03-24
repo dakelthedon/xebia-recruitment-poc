@@ -4,14 +4,14 @@ import { AppComponent } from './app.component';
 import { DetailComponent } from './detail/detail.component';
 import { CartComponent } from './cart/cart.component';
 import { CatalogComponent } from './catalog/catalog.component';
-import {OfferService} from './offer.service';
 import {ProductService} from './product.service';
 import {FormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {HttpModule} from "@angular/http";
+import {HttpModule} from '@angular/http';
 import { GroupbyPipe } from './groupby.pipe';
-import {CartService} from "./cart.service";
+import {CartService} from './cart.service';
+import {OfferService} from './offer.service';
 
 @NgModule({
   declarations: [

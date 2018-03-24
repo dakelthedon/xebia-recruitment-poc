@@ -2,6 +2,8 @@ export class Offer {
   private _type: string;
   private _value: number;
   private _sliceValue: number;
+  private _reducePrice: number;
+  private _refund: number;
 
   get type(): string {
     return this._type;
@@ -25,5 +27,21 @@ export class Offer {
 
   set sliceValue(value: number) {
     this._sliceValue = value;
+  }
+
+  get reducePrice(): number {
+    return this._reducePrice;
+  }
+
+  set reducePrice(value: number) {
+    this._reducePrice = value;
+  }
+
+  get refund(): number {
+    return this._refund;
+  }
+
+  set refund(value: number) {
+    this._refund = value;
   }
 }

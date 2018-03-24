@@ -1,3 +1,13 @@
-<p>
-  detail works!
-</p>
+<div class="row">
+  <div class="col-12 col-sm-12 col-md-5 col-lg-5 col-xl-5">
+    <img src="{{_book.cover}}">
+    <p class="font-weight-bold">EUR {{_book.price}}</p>
+    <button class="btn-primary color-green" id="addToCart" (click)="addToCart()">Ajouter au panier</button>
+  </div>
+  <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
+    <div class="modal-title">{{_book.title}}</div>
+    <div>
+      <p *ngFor="let s of _book.synopsis">{{s}}</p>
+    </div>
+  </div>
+</div>

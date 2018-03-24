@@ -1,25 +1,65 @@
-import { Injectable } from '@angular/core';
-import {Book} from "../entities/book";
+import {Injectable} from '@angular/core';
+import {Book} from '../entities/book';
 
 @Injectable()
 export class CartService {
 
-  private _books: Book[];
-
   constructor() {
-    this._books = [];
   }
 
+  /**
+   * Method to add a book to cart
+   * @param book
+   */
   public add = (book: Book): void => {
-    this._books.push(book);
+    const books = this.getStoredCart();
+    books.push(book);
+    this.setCartInStorage(books);
   }
 
-  public remove = (book: Book): void => {
-    this._books.splice(this._books.indexOf(book), 1);
+  /**
+   * Method to get stored cart
+   * @returns {Book[]}
+   */
+  public getStoredCart = (): Book[] => {
+    return JSON.parse(sessionStorage.getItem('cart')) as Book[];
   }
 
-  get books(): Book[] {
-    return this._books;
+  /**
+   * Method to set cart in session storage
+   * @param {Book[]} books
+   */
+  public setCartInStorage = (books: Book[]): void => {
+    sessionStorage.setItem('cart', JSON.stringify(books));
   }
 
+  /**
+   * Method to remove book from cart
+   * @param book
+   */
+  public removeItem = (isbn: string, books: Book[]): void => {
+    for (const b of books) {
+      if (b.isbn === isbn) {
+        books.splice(books.indexOf(b), 1);
+        break;
+      }
+    }
+    this.setCartInStorage(books);
+  }
+
+  /**
+   * Method to remove all books that have same isbn from cart
+   * @param {string} isbn
+   * @param {Book[]} books
+   */
+  public removeAllItems = (isbn: string, books: Book[]): void => {
+    const lstBook = [];
+    for (const b of books) {
+      if (b.isbn !== isbn) {
+        lstBook.push(b);
+      }
+    }
+    // Update cart in storage
+    this.setCartInStorage(lstBook);
+  }
 }

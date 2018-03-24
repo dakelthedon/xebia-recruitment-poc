@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {ProductService} from "../product.service";
+import {Book} from "../../entities/book";
+import {CartService} from "../cart.service";
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  private _route: ActivatedRoute;
+  private _productService: ProductService;
+  private _cartService: CartService;
+  private _isbn: string;
+  private _book: Book;
+  private _display = false;
 
+  constructor(route: ActivatedRoute,
+              productService: ProductService,
+              cartService: CartService) {
+    this._route = route;
+    this._productService = productService;
+    this._cartService = cartService;
+  }
   ngOnInit() {
+    this._route.params.subscribe(params => {
+      this._isbn = params['isbn'];
+      this._productService.getBookFromIsbn(this._isbn).subscribe((b: Book) => {
+        this._book = b;
+        this._display = true;
+      })
+    });
   }
 
+  /**
+   * Method to add book to cart
+   */
+  addToCart = () => {
+    this._cartService.add(this._book);
+  }
 }
