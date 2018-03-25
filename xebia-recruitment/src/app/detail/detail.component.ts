@@ -3,6 +3,7 @@ import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../product.service";
 import {Book} from "../../entities/book";
 import {CartService} from "../cart.service";
+import {isNullOrUndefined} from "util";
 
 @Component({
   selector: 'app-detail',
@@ -17,6 +18,7 @@ export class DetailComponent implements OnInit {
   private _isbn: string;
   private _book: Book;
   private _display = false;
+  private _bookFound = false;
 
   constructor(route: ActivatedRoute,
               productService: ProductService,
@@ -30,6 +32,9 @@ export class DetailComponent implements OnInit {
       this._isbn = params['isbn'];
       this._productService.getBookFromIsbn(this._isbn).subscribe((b: Book) => {
         this._book = b;
+        if (!isNullOrUndefined(this._book.title)) {
+          this._bookFound = true;
+        }
         this._display = true;
       })
     });

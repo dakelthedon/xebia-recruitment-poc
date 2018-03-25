@@ -11,22 +11,31 @@ export class PricePipe implements PipeTransform {
     if (isNullOrUndefined(pmin) && isNullOrUndefined(pmax)) {
       return books;
     }
-
     for (let i = 0; i < books.length; i++) {
-      if (!isNullOrUndefined(pmin) && !isNullOrUndefined(pmax)) {
-        if (books[i].price >= pmin && books[i].price <= pmax) {
-          results.push(books[i]);
-        }
-      } else if (!isNullOrUndefined(pmin)) {
-        if (books[i].price >= pmin) {
-          results.push(books[i]);
-        }
-      } else if (!isNullOrUndefined(pmax)) {
-        if (books[i].price <= pmax) {
-          results.push(books[i]);
-        }
-      }
+      this.applyFilter(books[i], results, pmin, pmax);
     }
     return results;
+  }
+
+  private applyFilter = (book: Book, results: Book[], pmin: number, pmax: number): void => {
+    if (!isNullOrUndefined(pmin) && !isNullOrUndefined(pmax)) {
+      if (pmax >= pmin) {
+        if (book.price >= pmin && book.price <= pmax) {
+          results.push(book);
+        }
+      } else {
+        if (book.price >= pmin) {
+          results.push(book);
+        }
+      }
+    } else if (!isNullOrUndefined(pmin)) {
+      if (book.price >= pmin) {
+        results.push(book);
+      }
+    } else if (!isNullOrUndefined(pmax)) {
+      if (book.price <= pmax) {
+        results.push(book);
+      }
+    }
   }
 }

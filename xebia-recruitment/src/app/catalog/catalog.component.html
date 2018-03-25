@@ -13,6 +13,9 @@
   </div>
 </div>
 <hr>
+<div class="col-12 text-center" *ngIf="searchNotFound()">
+  Votre recherche <b>"{{_searchValue}}"</b> ne correspond à aucun article.
+</div>
 <div class="container-fluid width-100 row" *ngIf="_display">
   <div class="container-fluid width-100 row">
     <div *ngFor="let b of _books | price:_priceMin:_priceMax | title: _titleFilter"

@@ -34,6 +34,7 @@ import { PricePipe } from './price.pipe';
       [
         {path: '', component: CatalogComponent, pathMatch: 'full'},
         {path: 'catalog', component: CatalogComponent, pathMatch: 'full'},
+        {path: 'catalog/:search', component: CatalogComponent, pathMatch: 'full'},
         {path: 'cart', component: CartComponent, pathMatch: 'full'},
         {path: 'detail/:isbn', component: DetailComponent, pathMatch: 'full'},
         {path: '**', redirectTo: '', pathMatch: 'full'}

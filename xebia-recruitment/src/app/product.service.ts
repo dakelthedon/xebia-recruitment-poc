@@ -26,6 +26,23 @@ export class ProductService {
     );
   }
 
+  public searchBooks = (searchVal: string): Observable<Book[]> => {
+    return this._httpClient.get(UrlConstants.URL_GET_BOOKS).map(
+      (response) => {
+        const books = response.json() as Book[];
+        const result: Book[] = [];
+        if (!isNullOrUndefined(books)) {
+          for (const b of books) {
+            if (b.title.includes(searchVal)) {
+              result.push(b);
+            }
+          }
+        }
+        return result;
+      }
+    );
+  }
+
   /**
    * Method to get Book From Isbn
    * @param {string} isbn

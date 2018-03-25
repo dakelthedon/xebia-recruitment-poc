@@ -14,8 +14,13 @@ import {CartService} from "./cart.service";
 export class AppComponent {
   private _searchingValue: string;
   private _titles = [];
+  private _router: Router;
+  private _productService: ProductService;
 
-  constructor(private _productService: ProductService) {
+  constructor(productService: ProductService,
+              router: Router) {
+    this._productService = productService;
+    this._router = router;
     // get All titles for typeahead
     this._productService.getBooks().subscribe((books: Book[]) => {
       if (!isNullOrUndefined(books) && books.length > 0) {
@@ -26,8 +31,12 @@ export class AppComponent {
     });
   }
 
-  search = (): void => {
-    console.log(this);
+  search = (searchVal: string): void => {
+    if (isNullOrUndefined(searchVal)) {
+      this._router.navigate(['/catalog']);
+    } else {
+      this._router.navigate(['/catalog', encodeURI(searchVal)]);
+    }
   }
 
   get searchingValue(): string {
@@ -38,16 +47,9 @@ export class AppComponent {
     this._searchingValue = value;
   }
 
-  /**
-   * Method call on blur while searching a book
-   */
-  onBlurBook() {
-    console.log(this._searchingValue);
-    const resultBook = this._titles.filter(t => t.toLowerCase() === this._searchingValue.toLowerCase());
-    console.log(this._searchingValue);
-    /*if (resultBook.length === 0) {
-     this._searchingValue = '';
-     }*/
+  selectedItem(item){
+    console.log(item.item);
+    this.search(item.item);
   }
 
   /**

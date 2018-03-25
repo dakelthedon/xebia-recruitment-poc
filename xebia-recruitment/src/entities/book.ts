@@ -5,6 +5,15 @@ export class Book {
   private _cover: string;
   private _synopsis: string[];
 
+
+  constructor(isbn: string, title: string, price: number, cover: string, synopsis: string[]) {
+    this._isbn = isbn;
+    this._title = title;
+    this._price = price;
+    this._cover = cover;
+    this._synopsis = synopsis;
+  }
+
   get isbn(): string {
     return this._isbn;
   }

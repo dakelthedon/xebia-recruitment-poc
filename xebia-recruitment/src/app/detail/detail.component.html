@@ -1,8 +1,10 @@
 <div *ngIf="!_display" class="text-center">
   <i class="fa fa-spinner fa-spin fa-4x"></i>
 </div>
-
-<div class="row" *ngIf="_display">
+<div class="col-12 text-center" *ngIf="_display && !_bookFound">
+  Article <b>#{{_isbn}}</b> non trouvé
+</div>
+<div class="row" *ngIf="_display && _bookFound">
   <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center margin-top-2">
     <img class="img-fluid detail-cover margin-top-2" src="{{_book.cover}}">
 
