@@ -34,7 +34,7 @@ export class ProductService {
         const result: Book[] = [];
         if (!isNullOrUndefined(books)) {
           for (const b of books) {
-            if (b.title.includes(searchVal)) {
+            if (b.title.toLowerCase().includes(searchVal.toLowerCase())) {
               result.push(b);
             }
           }
