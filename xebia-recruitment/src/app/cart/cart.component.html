@@ -3,9 +3,9 @@
     <i class="fa fa-spinner fa-spin fa-4x"></i>
   </div>
   <div class="text-center font-weight-bold" *ngIf="_displayCart && isCartEmpty()">
-    Votre panier est vide.
+    <p id="emptyCart">Votre panier est vide.</p>
   </div>
-  <table class="table" *ngIf="_displayCart && !isCartEmpty()">
+  <table class="table" *ngIf="_displayCart && !isCartEmpty()" id="cart">
     <thead class="no-border">
     <tr>
       <th class="col-6 col-lg-6 col-sm-6 col-xl-6 no-border">Produit</th>
@@ -27,7 +27,7 @@
           </div>
         </div>
       </td>
-      <td class="text-right"><b>EUR {{b.value[0].price}}</b></td>
+      <td class="text-right"><b>EUR {{b.value[0].price.toFixed(2)}}</b></td>
       <td class="text-right">{{b.value.length}}</td>
       <td class="text-center">
         <i class="pointer-cursor fa fa-trash-o fa-2x no-text-decoration default-color" (click)="removeItem(b.key)"></i>
@@ -37,9 +37,9 @@
     <tfoot>
     <tr>
       <td class="text-right" colspan="2">
-        <div class="text-right font-weight-bold color-red">Prix: EUR <span class="line-through">{{_globalPrice}}</span></div>
-        <div class="text-right font-weight-bold color-green">Nouveau Prix: EUR <span>{{_bestOffer.reducePrice}}</span></div>
-        <div class="text-right font-weight-bold color-green"><span>{{getBestOffertText()}}</span></div>
+        <div class="text-right font-weight-bold color-red" id="globalPrice">Prix: EUR <span class="line-through">{{_globalPrice.toFixed(2)}}</span></div>
+        <div class="text-right font-weight-bold color-green" id="reducePrice">Nouveau Prix: EUR <span>{{_bestOffer.reducePrice.toFixed(2)}}</span></div>
+        <div class="text-right font-weight-bold color-green" id="offerText"><span>{{getBestOffertText()}}</span></div>
       </td>
       <td colspan="2"></td>
     </tr>

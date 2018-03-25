@@ -5,6 +5,14 @@ export class Offer {
   private _reducePrice: number;
   private _refund: number;
 
+  constructor(type: string, value: number, sliceValue: number, reducePrice: number, refund: number) {
+    this._type = type;
+    this._value = value;
+    this._sliceValue = sliceValue;
+    this._reducePrice = reducePrice;
+    this._refund = refund;
+  }
+
   get type(): string {
     return this._type;
   }

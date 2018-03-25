@@ -21,7 +21,8 @@ export class ProductService {
   public getBooks = (): Observable<Book[]> => {
     return this._httpClient.get(UrlConstants.URL_GET_BOOKS).map(
       (response) => {
-        return response.json() as Book[];
+        const results: Book[] = response.json();
+        return results;
       }
     );
   }

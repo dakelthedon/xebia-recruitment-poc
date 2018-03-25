@@ -2,9 +2,9 @@
   <i class="fa fa-spinner fa-spin fa-4x"></i>
 </div>
 <div class="col-12 text-center" *ngIf="_display && !_bookFound">
-  Article <b>#{{_isbn}}</b> non trouvé
+  <p id="bookNotFound">Article <b>#{{_isbn}}</b> non trouvé.</p>
 </div>
-<div class="row" *ngIf="_display && _bookFound">
+<div class="row" *ngIf="_display && _bookFound" id="bookDetail">
   <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 text-center margin-top-2">
     <img class="img-fluid detail-cover margin-top-2" src="{{_book.cover}}">
 
@@ -13,7 +13,7 @@
   <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 margin-top-2">
     <div class="title font-weight-bold">{{_book.title}}</div>
     <hr>
-    <div class="font-weight-bold margin-top-2 color-red">Prix : EUR {{_book.price}}</div>
+    <div class="font-weight-bold margin-top-2 color-red">Prix : EUR {{_book.price.toFixed(2)}}</div>
     <hr>
     <div class="margin-top-2" *ngIf="_book.synopsis.length > 0">
       <p *ngFor="let s of _book.synopsis">{{s}}</p>

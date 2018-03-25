@@ -14,7 +14,7 @@ export class CartComponent implements OnInit {
 
   private _cartService: CartService;
   private _offerService: OfferService;
-  private _books = [];
+  private _books: Book[] = [];
   private _globalPrice = 0;
   private _bestOffer: Offer;
   private _displayCart = false;
@@ -112,7 +112,7 @@ export class CartComponent implements OnInit {
           text += 'Offre applicable directement en caisse';
           break;
         case 'slice':
-          text += 'Un montant de ' + this._bestOffer.refund + ' EUR vous sera remboursé';
+          text += 'Un montant de ' + this._bestOffer.refund.toFixed(2) + ' EUR vous sera remboursé';
           break;
 
         default:
@@ -122,4 +122,7 @@ export class CartComponent implements OnInit {
     return text;
   }
 
+  get books(): Book[] {
+    return this._books;
+  }
 }

@@ -32,9 +32,7 @@ export class DetailComponent implements OnInit {
       this._isbn = params['isbn'];
       this._productService.getBookFromIsbn(this._isbn).subscribe((b: Book) => {
         this._book = b;
-        if (!isNullOrUndefined(this._book.title)) {
-          this._bookFound = true;
-        }
+        this._bookFound = !isNullOrUndefined(this._book.title);
         this._display = true;
       })
     });
@@ -45,5 +43,13 @@ export class DetailComponent implements OnInit {
    */
   addToCart = () => {
     this._cartService.add(this._book);
+  }
+
+  get book(): Book {
+    return this._book;
+  }
+
+  set book(value: Book) {
+    this._book = value;
   }
 }

@@ -1,4 +1,5 @@
 import {Book} from '../entities/book';
+import {Offer} from "../entities/offer";
 
 export const BOOKS_MOCK: Book[] = [
   new Book('c8fabf68-8374-48fe-a7ea-a00ccd07afff', 'Henri Potier à l\'école des sorciers',
@@ -7,7 +8,12 @@ export const BOOKS_MOCK: Book[] = [
     30, 'http://henri-potier.xebia.fr/hp1.jpg', ['test11', 'test12', 'test13'])
 ];
 
-export const OFFER_MOCK: any =
+export const BOOK_MOCK: Book = new Book('c8fabf68-8374-48fe-a7ea-a00ccd07afff', 'Henri Potier à l\'école des sorciers',
+  35, 'http://henri-potier.xebia.fr/hp0.jpg', ['test', 'test1', 'test2']);
+
+export const OFFER_MOCK: Offer = new Offer('slice', 12, 100, 82, 10);
+
+export const OFFERS_MOCK: any =
   {
     offers: [
       {
