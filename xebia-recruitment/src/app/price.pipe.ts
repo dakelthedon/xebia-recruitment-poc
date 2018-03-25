@@ -11,9 +11,20 @@ export class PricePipe implements PipeTransform {
     if (isNullOrUndefined(pmin) && isNullOrUndefined(pmax)) {
       return books;
     }
+
     for (let i = 0; i < books.length; i++) {
-      if (books[i].price >= pmin && books[i].price <= pmax) {
-        results.push(books[i]);
+      if (!isNullOrUndefined(pmin) && !isNullOrUndefined(pmax)) {
+        if (books[i].price >= pmin && books[i].price <= pmax) {
+          results.push(books[i]);
+        }
+      } else if (!isNullOrUndefined(pmin)) {
+        if (books[i].price >= pmin) {
+          results.push(books[i]);
+        }
+      } else if (!isNullOrUndefined(pmax)) {
+        if (books[i].price <= pmax) {
+          results.push(books[i]);
+        }
       }
     }
     return results;

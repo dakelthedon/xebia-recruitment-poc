@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Book} from '../entities/book';
+import {isNullOrUndefined} from "util";
 
 @Injectable()
 export class CartService {
@@ -12,8 +13,14 @@ export class CartService {
    * @param book
    */
   public add = (book: Book): void => {
-    const books = this.getStoredCart();
-    books.push(book);
+    let books = this.getStoredCart();
+    if (isNullOrUndefined(books)) {
+      books = [];
+      books.push(book);
+    } else {
+      books.push(book);
+    }
+
     this.setCartInStorage(books);
   }
 

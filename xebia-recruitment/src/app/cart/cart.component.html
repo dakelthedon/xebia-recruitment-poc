@@ -2,10 +2,10 @@
   <div *ngIf="!_displayCart" class="text-center">
     <i class="fa fa-spinner fa-spin fa-4x"></i>
   </div>
-  <div class="text-center font-weight-bold" *ngIf="_displayCart && _books.length < 1">
+  <div class="text-center font-weight-bold" *ngIf="_displayCart && isCartEmpty()">
     Votre panier est vide.
   </div>
-  <table class="table" *ngIf="_displayCart && _books.length > 0">
+  <table class="table" *ngIf="_displayCart && !isCartEmpty()">
     <thead class="no-border">
     <tr>
       <th class="col-6 col-lg-6 col-sm-6 col-xl-6 no-border">Produit</th>

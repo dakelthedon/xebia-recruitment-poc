@@ -1,17 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DetailComponent } from './detail.component';
+import {testingConfig} from "../conf.spec";
 
 describe('DetailComponent', () => {
   let component: DetailComponent;
   let fixture: ComponentFixture<DetailComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ DetailComponent ]
-    })
-    .compileComponents();
-  }));
+  beforeEach(async(testingConfig));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(DetailComponent);

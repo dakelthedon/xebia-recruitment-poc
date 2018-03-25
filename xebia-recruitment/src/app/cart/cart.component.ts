@@ -60,6 +60,10 @@ export class CartComponent implements OnInit {
     });
   }
 
+  isCartEmpty = (): boolean => {
+    return isNullOrUndefined(this._books) || this._books.length < 1;
+  }
+
   /**
    * Method to set global price
    * @param {Book[]} books
